@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-base-bg text-[#23424B] antialiased;
+    font-family: 'Noto Sans SC', 'Nunito', system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(61, 180, 184, 0.22);
+    color: #16363d;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #eef6f8;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #6ecfd4, #7ec8e3);
+    border-radius: 999px;
+    border: 2px solid #eef6f8;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #3db4b8, #7ec8e3);
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply border border-white/60 bg-white/70 backdrop-blur-xl;
+  }
+
+  .gradient-text {
+    background-image: linear-gradient(135deg, #3db4b8 0%, #7ec8e3 60%, #f3a6b8 125%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .section-label {
+    @apply font-mono text-sm font-semibold uppercase tracking-[0.35em] text-primary;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white/80 px-4 py-1.5 font-mono text-xs text-[#39777E] shadow-card backdrop-blur;
+  }
+
+  .input {
+    @apply w-full rounded-xl border border-primary/15 bg-white px-4 py-3 text-[#23424B] placeholder-[#9db9bf]/70 outline-none transition-all focus:border-primary/50 focus:shadow-glow-sm;
+  }
+}
+
+/* Soft floating decorative blobs */
+.blob-decoration {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(46px);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
